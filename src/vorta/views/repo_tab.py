@@ -62,7 +62,7 @@ class RepoTab(BaseTab, RepoBase, RepoUI):
         # on incompressible data.
         self.repoCompression.addItem(self.tr('LZ4 (modern, default)'), 'lz4')
         self.repoCompression.addItem(self.tr('Zstandard Level 3 (modern)'), 'zstd,3')
-        self.repoCompression.addItem(self.tr('Zstandard Level 8 (modern)'), 'zstd,8')
+        self.repoCompression.addItem(self.tr('Zstandard Level 19 (modern)'), 'zstd,19')
 
         # zlib and lzma come from python stdlib and are there (and in borg) since long.
         # but maybe not much reason to start with these nowadays, considering zstd supports
@@ -214,7 +214,7 @@ class RepoTab(BaseTab, RepoBase, RepoUI):
 
     def toggle_available_compression(self):
         use_zstd = borg_compat.check('ZSTD')
-        for algo in ['zstd,3', 'zstd,8']:
+        for algo in ['zstd,3', 'zstd,19']:
             ix = self.repoCompression.findData(algo)
             self.repoCompression.model().item(ix).setEnabled(use_zstd)
 
